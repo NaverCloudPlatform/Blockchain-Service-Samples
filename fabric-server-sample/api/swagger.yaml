@@ -1,0 +1,117 @@
+---
+swagger: "2.0"
+info:
+  version: "1.6"
+  title: "fabric goods sample"
+host: "localhost:8080"
+basePath: "/v1"
+schemes:
+  - "http"
+paths:
+  /getWallet:
+    get:
+      tags:
+        - "Wallet"
+      operationId: "getWallet"
+      parameters:
+        - name: "walletId"
+          in: "query"
+          type: string
+          required: true
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: string
+              token:
+                type: integer
+                format: int64
+                x-omitempty: false
+  /setGoods:
+    post:
+      tags:
+        - "Goods"
+      operationId: "setGoods"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              category:
+                type: string
+              price:
+                type: integer
+                format: int64
+              walletId:
+                type: string
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int64
+              message:
+                type: string
+  /getAllGoods:
+    get:
+      tags:
+        - "Goods"
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                name:
+                  type: string
+                category:
+                  type: string
+                price:
+                  type: integer
+                  format: int64
+                  x-omitempty: false
+                walletId:
+                  type: string
+  /purchaseGoods:
+    post:
+      tags:
+        - "Goods"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: object
+            properties:
+              walletId:
+                type: string
+              key:
+                type: string
+                description: goods key
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int64
+              message:
+                type: string
