@@ -1,2 +1,2 @@
-# Blockchain-Service-Testing
-Sample testing app of Blockchain Service
+# Blockchain Service Sample Application & Chaincode's guide
+
