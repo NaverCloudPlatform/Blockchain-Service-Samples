@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 @DataType()
 public class Facility {
 
-    private final Gson gson = new Gson();
+    private final static Gson gson = new Gson();
 
     private String id;
 
